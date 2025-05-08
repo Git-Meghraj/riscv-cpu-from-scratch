@@ -1,0 +1,2 @@
+Add decoder and control logic.
+Find a way to read instruction memory from freshly compiled code. For this riscv gcc needs to be installed
