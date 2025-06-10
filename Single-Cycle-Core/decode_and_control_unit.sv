@@ -6,7 +6,8 @@ module decode_and_control_unit(	input logic[31:0] input_instruction,
 								output logic data_mem_wr_rd_sel,
 								output logic reg_file_wr_rd_sel,
 								output logic[1:0] imm_sel_out,
-								output logic[1:0] result_sel				
+								output logic[1:0] result_sel,
+								input logic clk				
 								);
 								
 logic[6:0] opcode;
@@ -30,8 +31,9 @@ typedef enum logic [2:0] {
     ALU_SUB     = 3'b001,
     ALU_AND     = 3'b010,
     ALU_OR      = 3'b011,
-    ALU_SLT     = 3'b101,
-    ALU_INVALID = 3'b111
+    ALU_SLT     = 3'b100,
+	ALU_BEQ		= 3'b101,
+    ALU_INVALID = 3'bxxx
 } alu_op_t;
 
 
@@ -63,8 +65,8 @@ always_comb begin
 		reg_file_wr_rd_sel = 1'b1;
 		data_mem_wr_rd_sel = 1'b0;
 		result_sel = 2'b00;
-		// not required imm_sel 		   = 2'bxx;
-		branch_inp = 1'b1;
+	    imm_sel_out= 2'bxx;
+		branch_inp = 1'b0;
 		jump_inp = 1'b0;
 		case ({funct3 , funct7})
 			{3'b000 , 7'b0000000}: alu_op = ALU_ADD ;
@@ -82,7 +84,7 @@ always_comb begin
 	  data_mem_wr_rd_sel = 1'b0;
 	  imm_sel_out 	= 2'b00;	/// select input_value[31:20] and extend sign
       result_sel = 2'b00;
-	  branch_inp = 1'b1;
+	  branch_inp = 1'b0;
 	  jump_inp = 1'b0;
 	  	  case (funct3)
         3'b000: alu_op = ALU_ADD;
@@ -100,7 +102,7 @@ always_comb begin
 	  data_mem_wr_rd_sel = 1'b0;
 	  imm_sel_out 	= 2'b00;	/// select input_value[31:20] and extend sign
       result_sel = 2'b01;
-	  branch_inp = 1'b1;
+	  branch_inp = 1'b0;
 	  jump_inp = 1'b0;
 	  alu_op = ALU_ADD;
     end
@@ -110,7 +112,7 @@ always_comb begin
 	  reg_file_wr_rd_sel = 1'b0;
 	  data_mem_wr_rd_sel = 1'b1;
 	  imm_sel_out 	= 2'b01;
-	  // not req result_sel = 2'bxx;
+	  result_sel = 2'bxx;
 	  branch_inp = 1'b0;
 	  jump_inp = 1'b0;
 	  alu_op = ALU_ADD;
@@ -121,23 +123,32 @@ always_comb begin
 		reg_file_wr_rd_sel = 1'b0;
 		data_mem_wr_rd_sel = 1'b0;
 		imm_sel_out 	= 2'b10;
-		//result_sel = 2'b00;
+		result_sel = 2'bxx;
 		branch_inp = 1'b1;
 		jump_inp = 1'b0;
-		alu_op = ALU_SUB;
+		alu_op = ALU_BEQ;
     end
  
 	J_TYPE: begin
-		// not needed here alu_B_input_sel = 1'bx;		/// select rs2 for alu B 
+	    alu_B_input_sel = 1'bx;		/// select rs2 for alu B 
 		reg_file_wr_rd_sel = 1'b1;
 		data_mem_wr_rd_sel = 1'b0;
 		result_sel = 2'b10;
 		imm_sel_out 	= 2'b11;
 		jump_inp = 1'b1;
 		branch_inp = 1'b0;
-		// not req alu_op = 3'bxxx;
+		alu_op = ALU_INVALID;
     end
-    default: alu_op = ALU_INVALID;
+    default: begin
+    	alu_B_input_sel = 1'b0;		/// select rs2 for alu B 
+		reg_file_wr_rd_sel = 1'b0;
+		data_mem_wr_rd_sel = 1'b0;
+		result_sel = 2'b00;
+		imm_sel_out 	= 2'b00;
+		jump_inp = 1'b0;
+		branch_inp = 1'b0;
+		alu_op = ALU_INVALID;
+    end
   endcase
 end
 

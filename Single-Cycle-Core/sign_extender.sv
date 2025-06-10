@@ -1,6 +1,6 @@
-module sign_extender ( 	input logic[31:0] input_value,
+module sign_extender ( 	input logic [31:0] input_value,
 						input logic[1:0] imm_sel,
-						output logic[31:0] sign_extended_value
+						output logic [31:0] sign_extended_value
 						);
 
 always_comb begin
