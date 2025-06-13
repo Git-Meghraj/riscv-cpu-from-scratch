@@ -1,6 +1,6 @@
 # riscv-core-systemverilog
 A clean, from-scratch implementation of a basic RISC-V CPU core using SystemVerilog for FPGA prototyping.
-This repository contains a single-cycle RISC-V processor implemented from scratch in SystemVerilog. It supports a basic subset of the RV32I instruction set, including at least one instruction from each major instruction type (R, I, S, B, U, J).
+This repository supports a basic subset of the RV32I instruction set, including at least one instruction from each major instruction type (R, I, S, B, U, J).
 
 The project includes a simple LED blink demo using memory-mapped I/O on the PYNQ-Z2 FPGA board, showcasing how custom CPUs can interact with hardware peripherals.
 
