@@ -1,20 +1,46 @@
-# riscv-core-systemverilog
-A clean, from-scratch implementation of a basic RISC-V CPU core using SystemVerilog for FPGA prototyping.
-This repository supports a basic subset of the RV32I instruction set, including at least one instruction from each major instruction type (R, I, S, B, U, J).
+# RISC-V CPU from Scratch
 
-The project includes a simple LED blink demo using memory-mapped I/O on the PYNQ-Z2 FPGA board, showcasing how custom CPUs can interact with hardware peripherals.
+A clean, from-scratch implementation of a basic RISC-V CPU core using SystemVerilog for FPGA prototyping.  
+This repository supports a basic subset of the **RV32I** instruction set, including at least one instruction from each major instruction type (R, I, S, B, U, J).
 
-🔧 Key Features:
+The project includes a simple LED blink demo using memory-mapped I/O on the **PYNQ-Z2 FPGA** board, showcasing how custom CPUs can interact with hardware peripherals.
 
-Basic RISC-V instruction support (subset of RV32I)
+---
 
-Modular and synthesizable SystemVerilog design
+🔧 **Key Features**
 
-LED blink demo via memory-mapped I/O (PYNQ-Z2 board)
+- ✅ Basic RISC-V instruction support (subset of RV32I)
+- ✅ Modular and synthesizable SystemVerilog design
+- ✅ LED blink demo via memory-mapped I/O (PYNQ-Z2 board)
+- ✅ Includes testbenches for simulation and debugging
+- ✅ Great for learning, experimentation, and FPGA prototyping
 
-Includes testbenches for verification
+---
 
-Great for learning, simulation, and FPGA prototyping
+🚀 **Now Live: 5-Stage Pipelined Version**
 
-📌 Coming Soon:
-A pipelined version of the processor is currently under development and will be released in the future.
+The wait is over! In addition to the single-cycle core, this repository now includes a **five-stage pipelined RISC-V CPU** featuring:
+
+- ✅ Classic 5-stage pipeline (IF, ID, EX, MEM, WB)
+- ✅ Hazard detection and forwarding units
+- ✅ Flush and stall logic for control and data hazards
+- ✅ Improved throughput and reduced CPI
+- ✅ Runs the same LED blink demo with enhanced performance
+
+The pipelined version has been verified in simulation using a toggle test: a register connected to an LED toggles using an assembly program. The assembly was compiled using **RISC-V GCC**, then translated into hex and loaded into instruction memory.
+
+---
+
+📁 **Repository Structure**
+
+/Single-Cycle-Core/ # Single-cycle CPU core and testbench
+/Five-Staged-Pipelined-Core/ # New pipelined core with hazard logic
+/common/ # Shared components and instruction formats
+README.md
+
+---
+
+📌 **License & Contribution**
+
+These cores are **open-source and free to use**. Experiment, adapt, and learn!  
+For questions or contributions, feel free to connect or raise issues.
