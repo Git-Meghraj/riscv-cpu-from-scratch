@@ -7,7 +7,7 @@ This repository contains assembly source files and a Makefile for building RISC-
 ## Overview
 
 - The assembly code is written in `.s` files.
-- Run make command in cmd and the Makefile assembles, links, and disassembles the program using the RISC-V GNU toolchain.
+- Run make command in CMD and the Makefile assembles, links, and disassembles the program using the RISC-V GNU toolchain.
 - Target architecture: RV32I (`-march=rv32i`), ABI: ILP32 (`-mabi=ilp32`).
 
 ---
