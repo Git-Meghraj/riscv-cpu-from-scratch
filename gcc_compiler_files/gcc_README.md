@@ -24,7 +24,7 @@ This repository contains assembly source files and a Makefile for building RISC-
 
 1. Clone this repository:
    ```bash
-   git clone <repo-url>
+   git clone [<repo-url>](https://github.com/Git-Meghraj/riscv-cpu-from-scratch)
    cd gcc_compiler_files
 
 2. If you use windows, alternatively you can run the commands manually in your Command Prompt or PowerShell (one by one):
