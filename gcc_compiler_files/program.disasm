@@ -1,0 +1,50 @@
+
+program.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	1141                	addi	sp,sp,-16
+   2:	e422                	sd	s0,8(sp)
+   4:	0800                	addi	s0,sp,16
+   6:	00f00713          	li	a4,15
+   a:	00100593          	li	a1,1
+   e:	3e800513          	li	a0,1000
+  12:	3e800613          	li	a2,1000
+  16:	167d                	addi	a2,a2,-1
+  18:	00061463          	bnez	a2,20 <_start+0x20>
+  1c:	fe5ff06f          	j	0 <_start>
+  20:	fe1ff06f          	j	0 <_start>
+  24:	3e800613          	li	a2,1000
+  28:	157d                	addi	a0,a0,-1
+  2a:	00051463          	bnez	a0,32 <_start+0x32>
+  2e:	fd3ff06f          	j	0 <_start>
+  32:	fcfff06f          	j	0 <_start>
+  36:	3e800513          	li	a0,1000
+  3a:	177d                	addi	a4,a4,-1
+  3c:	00071463          	bnez	a4,44 <_start+0x44>
+  40:	fc1ff06f          	j	0 <_start>
+  44:	fbdff06f          	j	0 <_start>
+  48:	15fd                	addi	a1,a1,-1
+  4a:	00f00713          	li	a4,15
+  4e:	3e800513          	li	a0,1000
+  52:	3e800613          	li	a2,1000
+  56:	167d                	addi	a2,a2,-1
+  58:	00061463          	bnez	a2,60 <_start+0x60>
+  5c:	fa5ff06f          	j	0 <_start>
+  60:	fa1ff06f          	j	0 <_start>
+  64:	3e800613          	li	a2,1000
+  68:	157d                	addi	a0,a0,-1
+  6a:	00051463          	bnez	a0,72 <_start+0x72>
+  6e:	f93ff06f          	j	0 <_start>
+  72:	f8fff06f          	j	0 <_start>
+  76:	3e800513          	li	a0,1000
+  7a:	177d                	addi	a4,a4,-1
+  7c:	00071463          	bnez	a4,84 <_start+0x84>
+  80:	f81ff06f          	j	0 <_start>
+  84:	f7dff06f          	j	0 <_start>
+  88:	0001                	nop
+  8a:	6422                	ld	s0,8(sp)
+  8c:	0141                	addi	sp,sp,16
+  8e:	8082                	ret
