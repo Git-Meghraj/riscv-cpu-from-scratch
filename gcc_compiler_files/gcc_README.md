@@ -28,11 +28,11 @@ This repository contains assembly source files and a Makefile for building RISC-
    cd gcc_compiler_files
 
 2. If you use windows, alternatively you can run the commands manually in your Command Prompt or PowerShell (one by one):
+   ```
+   riscv64-unknown-elf-as -o program.o program.s
 
-riscv64-unknown-elf-as -o program.o program.s
+   riscv64-unknown-elf-ld -o program.elf program.o
 
-riscv64-unknown-elf-ld -o program.elf program.o
-
-riscv64-unknown-elf-objdump -d program.o > program.disasm
+   riscv64-unknown-elf-objdump -d program.o > program.disasm
 
 
